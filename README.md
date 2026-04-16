@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Mesh Circular Shift Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive web application that simulates **Circular q-Shift on a 2D Mesh Topology** used in parallel computing systems.
 
-## Available Scripts
+The application demonstrates how data moves across a square mesh network using a **two-stage communication algorithm**:
 
-In the project directory, you can run:
+1. **Row Shift**
+2. **Column Shift**
 
-### `npm start`
+It visually compares the efficiency of a **2D Mesh** against a naive **Ring Topology**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Live Demo
 
-### `npm test`
+👉 [Open Live Demo](https://your-vercel-link.vercel.app)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📌 Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✅ User input for:
+- Number of nodes `p`
+- Shift distance `q`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✅ Automatic validation:
+- `p` must be a perfect square
+- `q` must satisfy `1 <= q < p`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+✅ Visualization of:
+- Initial state
+- Row shift
+- Final shifted state
 
-### `npm run eject`
+✅ Interactive controls:
+- Run simulation
+- Next Step
+- Auto Play animation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+✅ Complexity comparison:
+- Mesh steps
+- Ring steps
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧠 Algorithm Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+For a mesh with:
 
-## Learn More
+p = R × C
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The circular shift is divided into:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Stage 1 — Row Shift
+row_shift = q mod C
 
-### Code Splitting
+### Stage 2 — Column Shift
+column_shift = floor(q / C)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Total mesh communication steps
+mesh_steps = row_shift + column_shift
 
-### Analyzing the Bundle Size
+Compared with ring:
+ring_steps = min(q, p - q)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🏗 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+``` id="2wwnsy"
+mesh-shift-visualizer/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── MeshGrid.js
+│   │   ├── ControlPanel.js
+│   │   └── ComplexityPanel.js
+│   ├── utils/
+│   │   └── shiftLogic.js
+│   ├── App.js
+│   └── index.js
+├── README.md
+└── package.json
