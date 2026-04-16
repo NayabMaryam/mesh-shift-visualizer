@@ -13,7 +13,7 @@ It visually compares the efficiency of a **2D Mesh** against a naive **Ring Topo
 
 ## 🚀 Live Demo
 
-👉 [Open Live Demo](mesh-shift-visualizer-black.vercel.app)
+👉 [Open Live Demo](https://mesh-shift-visualizer-black.vercel.app/)
 
 ---
 
